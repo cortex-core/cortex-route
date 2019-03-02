@@ -1,2 +1,2 @@
-# cortex-p2p
+# cortex-axon
 Service to provide scalable STUN functionality
