@@ -1,5 +1,5 @@
 {
-  "name": "cortex-axon-service",
+  "name": "cortex-route-service",
   "version": "1.0.1",
   "description": "Service which responds to route queries",
   "main": "main/service.js",
@@ -10,6 +10,13 @@
   "author": "Basar Turgut",
   "license": "GPL-3.0",
   "dependencies": {
-    "cortex-axon-shared": "^1.0.1"
+    "cortex-route-shared": "^1.0.1",
+    "express": "^4.17.1",
+    "express-validator": "^5.3.1",
+    "helmet": "^3.18.0",
+    "mongodb": "^3.2.6"
+  },
+  "devDependencies": {
+    "mongo-mock": "^3.7.1"
   }
 }

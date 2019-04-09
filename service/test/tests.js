@@ -4,18 +4,18 @@ const _ = require('lodash');
 const chai_date_string = require('chai-date-string');
 const MongoClient = require("mongodb").MongoClient;
 const MongoClientMock = require('mongo-mock').MongoClient;
-
-const log = require('cortex-axon-shared').log;
-
+const stun = require('node-stun');
+const log = require('cortex-route-shared').log;
 const sinon = require('sinon');
 
 chai.should();
 chai.use(chai_http);
 chai.use(chai_date_string);
 
-describe('cortex-axon simple tests', function() {
+describe('cortex-route simple tests', function() {
 
     let mongo_stub;
+    let stun_stub;
     let service;
     let _db;
 
@@ -24,13 +24,19 @@ describe('cortex-axon simple tests', function() {
             log.info("Initializing testing bed...");
 
             mongo_stub = sinon.stub(MongoClient, 'connect');
+            stun_stub = sinon.stub(stun, 'createServer');
+
+            stun_stub.callsFake(function() {
+                log.info('Mocking stun server...');
+                return {on: sinon.fake(), listen: sinon.fake()};
+            });
 
             MongoClientMock.connect('mongodb://localhost:27017/', function(db_err, db) {
                 chai.should().equal(db_err, null);
                 _db = db.db("cortex-route-cache");
-                _db.collection("peers").insert({peer_id:'address1', route:{}}, function(err, res) {
+                _db.collection("peers").insert({peer_id:'address1', route:{ep1:'ctx://127.0.0.1:58987'}}, function(err) {
                     chai.should().equal(err, null);
-                    mongo_stub.callsFake(function foo(url, cb) {
+                    mongo_stub.callsFake(function(url, cb) {
                         cb(null, db);
                     });
                     service = require('./../main/service');
@@ -43,6 +49,7 @@ describe('cortex-axon simple tests', function() {
     after(function(){
         log.info("Finalizing testing bed...");
         mongo_stub.restore();
+        stun_stub.restore();
     });
 
     it('should provide interface via /route GET endpoint to query routes', function(done){
