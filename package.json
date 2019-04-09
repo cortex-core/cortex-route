@@ -1,12 +1,8 @@
 {
-  "name": "cortex-axon",
+  "name": "cortex-axon-parent",
   "version": "1.0.0",
   "description": "Service to provide scalable STUN functionality and respond peer route queries",
   "main": "service.js",
-  "scripts": {
-    "test": "mocha --recursive --exit",
-    "start": "node service.js --use_strict"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cortex-core/cortex-axon.git"

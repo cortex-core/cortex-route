@@ -1,12 +1,11 @@
 {
   "name": "cortex-axon-shared",
   "version": "1.0.0",
-  "description": "",
+  "description": "Shared functionality for cortex-axon packages",
   "main": "main/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive --exit"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Basar Turgut",
   "license": "GPL-3.0"
 }
