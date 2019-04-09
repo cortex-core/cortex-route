@@ -1,0 +1,38 @@
+{
+  "name": "cortex-axon",
+  "version": "1.0.0",
+  "description": "Service to provide scalable STUN functionality and respond peer route queries",
+  "main": "service.js",
+  "scripts": {
+    "test": "mocha --recursive --exit",
+    "start": "node service.js --use_strict"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cortex-core/cortex-axon.git"
+  },
+  "author": "Basar Turgut",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/cortex-core/cortex-axon/issues"
+  },
+  "homepage": "https://github.com/cortex-core/cortex-axon#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "helmet": "^3.16.0",
+    "lodash": "^4.17.11",
+    "mongodb": "^3.2.3",
+    "node-stun": "git+https://github.com/cortex-core/stun.git#v1.0.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-date-string": "^0.1.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.1.2",
+    "mongo-mock": "^3.4.0",
+    "sinon": "^7.3.1"
+  }
+}
