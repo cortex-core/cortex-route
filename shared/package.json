@@ -1,6 +1,6 @@
 {
   "name": "cortex-axon-shared",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shared functionality for cortex-axon packages",
   "main": "main/index.js",
   "scripts": {

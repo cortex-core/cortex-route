@@ -1,6 +1,6 @@
 {
   "name": "cortex-axon-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Service which responds to route queries",
   "main": "main/service.js",
   "scripts": {
@@ -10,6 +10,6 @@
   "author": "Basar Turgut",
   "license": "GPL-3.0",
   "dependencies": {
-    "cortex-axon-shared": "1.0.0"
+    "cortex-axon-shared": "^1.0.1"
   }
 }
