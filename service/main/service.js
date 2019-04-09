@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const validator = require('express-validator');
 const _ = require('lodash');
 const { MongoClient, ObjectId } = require('mongodb');
-const log = require('./src/log');
+const log = require('cortex-axon-shared').log;
 
 const TTL = 180;
 

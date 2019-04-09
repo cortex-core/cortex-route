@@ -1,0 +1,11 @@
+{
+  "name": "cortex-axon-client",
+  "version": "1.0.0",
+  "description": "Client to communicate with cortex-axon-service",
+  "main": "client.js",
+  "scripts": {
+    "test": "mocha --recursive --exit"
+  },
+  "author": "Basar Turgut",
+  "license": "GPL-3.0"
+}

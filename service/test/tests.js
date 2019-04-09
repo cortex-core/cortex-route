@@ -5,7 +5,7 @@ const chai_date_string = require('chai-date-string');
 const MongoClient = require("mongodb").MongoClient;
 const MongoClientMock = require('mongo-mock').MongoClient;
 
-const log = require('./../src/log');
+const log = require('cortex-axon-shared').log;
 
 const sinon = require('sinon');
 
@@ -33,7 +33,7 @@ describe('cortex-axon simple tests', function() {
                     mongo_stub.callsFake(function foo(url, cb) {
                         cb(null, db);
                     });
-                    service = require('./../service');
+                    service = require('./../main/service');
                     resolve();
                 });
             });
