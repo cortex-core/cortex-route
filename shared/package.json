@@ -1,6 +1,6 @@
 {
   "name": "cortex-route-shared",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared functionality for cortex-axon packages",
   "main": "main/index.js",
   "author": "Basar Turgut",
