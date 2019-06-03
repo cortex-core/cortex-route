@@ -9,7 +9,7 @@ const stun = require('node-stun');
 
 const TTL = 180;
 
-const url = 'mongodb://localhost:27017/';
+const url = 'mongodb://mongodb:27017/';
 
 
 let app = express();
@@ -77,7 +77,7 @@ MongoClient.connect(url, function(err, db) {
         });
     });
 
-    app.listen(9999, function() {
+    app.listen(8080, function() {
         log.info("cortex-route started.");
     });
 });

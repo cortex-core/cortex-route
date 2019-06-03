@@ -5,7 +5,7 @@
   "main": "main/service.js",
   "scripts": {
     "test": "mocha --recursive --exit",
-    "start": "node service.js --use_strict"
+    "start": "node main/service.js --use_strict"
   },
   "author": "Basar Turgut",
   "license": "GPL-3.0",
