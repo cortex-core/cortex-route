@@ -3,11 +3,9 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const validator = require('express-validator');
 const _ = require('lodash');
-const { MongoClient, ObjectId } = require('mongodb');
+const { MongoClient } = require('mongodb');
 const log = require('cortex-route-shared').log;
 const stun = require('node-stun');
-
-const TTL = 180;
 
 const url = 'mongodb://mongodb:27017/';
 
@@ -49,16 +47,17 @@ MongoClient.connect(url, function(err, db) {
     log.info("Mongo DB connection has been provided.");
     _db = db.db("cortex-route-cache");
 
+    //https://stackoverflow.com/questions/978061/http-get-with-request-body
     app.get('/route', function(req, res) {
         log.debug("Route method is being called");
-        req.checkBody('peers', 'Peers parameter should be an array!!').isArray();
-        req.checkBody('peers', 'Peers parameter is required!').notEmpty();
+        req.checkQuery('peers', 'Peers parameter should be an array!!').isArray();
+        req.checkQuery('peers', 'Peers parameter is required!').notEmpty();
         let errors = req.validationErrors();
         if (errors) {
             res.status(403).send(_.map(errors, err => { return err.msg; }));
             return;
         }
-        let peers = req.body.peers;
+        let peers = req.query.peers;
         log.debug("Params are validated");
         // Temporary Route Results
         _db.collection("peers").find({"peer_id":{'$in' : peers}}).toArray(function (err, result) {

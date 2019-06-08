@@ -9,6 +9,6 @@ class RouteClient {
     }
 }
 
-RouteClient.url = 'localhost:9999';
+RouteClient.url = 'route-machine:8080';
 
 module.exports = RouteClient;

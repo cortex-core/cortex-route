@@ -7,7 +7,7 @@ WORKDIR /home/node/cortex-route
 RUN npm install -g lerna
 COPY --chown=node:node . .
 RUN lerna bootstrap
-EXPOSE 3478 3479
+EXPOSE 3478 3479 8080
 COPY --chown=node:node service/docker/local/entrypoint.sh .
 ENTRYPOINT ["/home/node/cortex-route/entrypoint.sh"]
 CMD ["init_alias"]
