@@ -1,14 +1,22 @@
-const log = require('cortex-route-shared').log;
 const axios = require("axios");
 
 class RouteClient {
 
-    query_routes(req) {
-        log.debug("Request");
-        return axios.post(RouteClient.url + '/query_routes', req);
+    query_routes(peers) {
+        if (peers == undefined) {
+            throw "Peers param is needed";
+        }
+
+        if (!Array.isArray(peers)) {
+            peers = [peers];
+        }
+        let req_config = {
+            peers: peers
+        }
+        return axios.get(RouteClient.url + '/route', req_config);
     }
 }
 
-RouteClient.url = 'route-machine:8080';
+RouteClient.url = 'http://route-machine:8080';
 
 module.exports = RouteClient;
