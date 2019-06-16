@@ -1,6 +1,6 @@
 {
   "name": "cortex-route-client",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Client to communicate with cortex-axon-service",
   "main": "main/client.js",
   "author": "Basar Turgut",
