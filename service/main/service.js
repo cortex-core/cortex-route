@@ -7,7 +7,7 @@ const { MongoClient } = require('mongodb');
 const log = require('cortex-route-shared').log;
 const stun = require('node-stun');
 
-const url = 'mongodb://mongodb:27017/';
+const url = 'mongodb://localhost:27017/';
 
 
 let app = express();

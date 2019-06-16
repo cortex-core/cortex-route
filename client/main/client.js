@@ -11,7 +11,9 @@ class RouteClient {
             peers = [peers];
         }
         let req_config = {
-            peers: peers
+            params: {
+                peers: peers
+            }
         }
         return axios.get(RouteClient.url + '/route', req_config);
     }

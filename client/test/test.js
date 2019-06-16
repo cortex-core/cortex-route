@@ -21,20 +21,13 @@ describe('cortex-route-client tests', function() {
             log.info("Initializing testing bed...");
             axios_mock = new MockAdapter(axios);
 
-            axios_mock.onGet(Client.url + '/route') // Unfortunately, we couldn't use builtin query params filter
-                .reply(function (req) {
-                    let peer = _.first(req.peers);
-                    if (peer == "address1") {
-                        return [200, [{
-                            peer_id: 'address1',
-                            route: {
-                                ep1: 'ctx://127.0.0.1:58987'
-                            }
-                        }]];
-                    } else {
-                        return [404];
+            axios_mock.onGet(Client.url + '/route', { params: { peers: ["address1"] } })
+                .reply(200, [{
+                    peer_id: 'address1',
+                    route: {
+                        ep1: 'ctx://127.0.0.1:58987'
                     }
-                });
+                }]);
 
             client = new Client();
             resolve();
