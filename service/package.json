@@ -1,6 +1,6 @@
 {
   "name": "cortex-route-service",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Service which responds to route queries",
   "main": "main/service.js",
   "scripts": {
@@ -17,5 +17,6 @@
   },
   "devDependencies": {
     "mongo-mock": "^3.7.1"
-  }
+  },
+  "gitHead": "08b2b7ad92326edbc682f81bc7a6dd18d5bf86b9"
 }

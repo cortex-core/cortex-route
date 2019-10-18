@@ -1,6 +1,6 @@
 {
   "name": "cortex-route-client",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Client to communicate with cortex-axon-service",
   "main": "main/client.js",
   "author": "Basar Turgut",
@@ -10,5 +10,6 @@
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.16.0"
-  }
+  },
+  "gitHead": "08b2b7ad92326edbc682f81bc7a6dd18d5bf86b9"
 }
