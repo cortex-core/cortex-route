@@ -2,7 +2,6 @@ const chai = require('chai');
 const chai_http = require('chai-http');
 const _ = require('lodash');
 const chai_date_string = require('chai-date-string');
-const log = require('cortex-route-shared').log;
 const Client = require('./../main/client');
 const axios = require('axios');
 const MockAdapter = require('axios-mock-adapter');
@@ -18,7 +17,7 @@ describe('cortex-route-client tests', function() {
 
     before(function(){
         return new Promise(function (resolve) {
-            log.info("Initializing testing bed...");
+            console.log("Initializing testing bed...");
             axios_mock = new MockAdapter(axios);
 
             axios_mock.onGet(Client.url + '/route', { params: { peers: ["address1"] } })
@@ -35,7 +34,7 @@ describe('cortex-route-client tests', function() {
     });
 
     after(function(){
-        log.info("Finalizing testing bed...");
+        console.log("Finalizing testing bed...");
         axios_mock.restore();
     });
 
