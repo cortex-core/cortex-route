@@ -5,7 +5,6 @@ const chai_date_string = require('chai-date-string');
 const MongoClient = require("mongodb").MongoClient;
 const MongoClientMock = require('mongo-mock').MongoClient;
 const stun = require('node-stun');
-const log = require('cortex-route-shared').log;
 const sinon = require('sinon');
 
 chai.should();
@@ -21,13 +20,13 @@ describe('cortex-route simple tests', function() {
 
     before(function(){
         return new Promise(function (resolve) {
-            log.info("Initializing testing bed...");
+            console.log("Initializing testing bed...");
 
             mongo_stub = sinon.stub(MongoClient, 'connect');
             stun_stub = sinon.stub(stun, 'createServer');
 
             stun_stub.callsFake(function() {
-                log.info('Mocking stun server...');
+                console.log('Mocking stun server...');
                 return {on: sinon.fake(), listen: sinon.fake()};
             });
 
@@ -47,7 +46,7 @@ describe('cortex-route simple tests', function() {
     });
 
     after(function(){
-        log.info("Finalizing testing bed...");
+        console.log("Finalizing testing bed...");
         mongo_stub.restore();
         stun_stub.restore();
     });

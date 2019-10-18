@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const validator = require('express-validator');
 const _ = require('lodash');
 const { MongoClient } = require('mongodb');
-const log = require('cortex-route-shared').log;
 const stun = require('node-stun');
 
 const url = 'mongodb://mongodb:27017/';
@@ -24,7 +23,7 @@ let stun_server = stun.createServer({
 });
 
 stun_server.on('log', function (l) {
-    log.debug(l);
+    console.log(l);
 });
 
 stun_server.listen();
@@ -40,16 +39,16 @@ app.use(validator());
 MongoClient.connect(url, function(err, db) {
 
     if (err) {
-        log.error("Mongo DB connection has been failed.");
+        console.log("Mongo DB connection has been failed.");
         throw err;
     }
 
-    log.info("Mongo DB connection has been provided.");
+    console.log("Mongo DB connection has been provided.");
     _db = db.db("cortex-route-cache");
 
     //https://stackoverflow.com/questions/978061/http-get-with-request-body
     app.get('/route', function(req, res) {
-        log.debug("Route method is being called");
+        console.log("Route method is being called");
         req.checkQuery('peers', 'Peers parameter should be an array!!').isArray();
         req.checkQuery('peers', 'Peers parameter is required!').notEmpty();
         let errors = req.validationErrors();
@@ -58,11 +57,11 @@ MongoClient.connect(url, function(err, db) {
             return;
         }
         let peers = req.query.peers;
-        log.debug("Params are validated");
+        console.log("Params are validated");
         // Temporary Route Results
         _db.collection("peers").find({"peer_id":{'$in' : peers}}).toArray(function (err, result) {
             if(err != null) {
-                log.error("DB returned error.");
+                console.log("DB returned error.");
                 res.status(503).send(err);
                 return;
             }
@@ -77,7 +76,7 @@ MongoClient.connect(url, function(err, db) {
     });
 
     app.listen(8080, function() {
-        log.info("cortex-route started.");
+        console.log("cortex-route started.");
     });
 });
 
