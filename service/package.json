@@ -1,6 +1,6 @@
 {
   "name": "cortex-route-service",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Service which responds to route queries",
   "main": "main/service.js",
   "scripts": {
