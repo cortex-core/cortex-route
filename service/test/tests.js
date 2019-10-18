@@ -4,7 +4,6 @@ const _ = require('lodash');
 const chai_date_string = require('chai-date-string');
 const MongoClient = require("mongodb").MongoClient;
 const MongoClientMock = require('mongo-mock').MongoClient;
-const stun = require('node-stun');
 const sinon = require('sinon');
 
 chai.should();
@@ -14,7 +13,6 @@ chai.use(chai_date_string);
 describe('cortex-route simple tests', function() {
 
     let mongo_stub;
-    let stun_stub;
     let service;
     let _db;
 
@@ -23,12 +21,6 @@ describe('cortex-route simple tests', function() {
             console.log("Initializing testing bed...");
 
             mongo_stub = sinon.stub(MongoClient, 'connect');
-            stun_stub = sinon.stub(stun, 'createServer');
-
-            stun_stub.callsFake(function() {
-                console.log('Mocking stun server...');
-                return {on: sinon.fake(), listen: sinon.fake()};
-            });
 
             MongoClientMock.connect('mongodb://mongodb:27017/', function(db_err, db) {
                 chai.should().equal(db_err, null);
@@ -48,7 +40,6 @@ describe('cortex-route simple tests', function() {
     after(function(){
         console.log("Finalizing testing bed...");
         mongo_stub.restore();
-        stun_stub.restore();
     });
 
     it('should provide interface via /route GET endpoint to query routes', function(done){

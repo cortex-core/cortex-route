@@ -4,29 +4,11 @@ const bodyParser = require('body-parser');
 const validator = require('express-validator');
 const _ = require('lodash');
 const { MongoClient } = require('mongodb');
-const stun = require('node-stun');
 
 const url = 'mongodb://mongodb:27017/';
 
-
 let app = express();
 let _db = undefined;
-let stun_server = stun.createServer({
-    primary: {
-        host: '127.0.0.1',
-        port: '3478'
-    },
-    secondary: {
-        host: '127.0.0.2',
-        port: '3479'
-    }
-});
-
-stun_server.on('log', function (l) {
-    console.log(l);
-});
-
-stun_server.listen();
 
 app.use(helmet());
 app.use(bodyParser.json());
