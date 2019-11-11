@@ -13,10 +13,7 @@
     "express": "^4.17.1",
     "express-validator": "^5.3.1",
     "helmet": "^3.18.0",
-    "mongodb": "^3.2.6"
-  },
-  "devDependencies": {
-    "mongo-mock": "^3.7.1"
+    "redis": "^2.8.0"
   },
   "gitHead": "08b2b7ad92326edbc682f81bc7a6dd18d5bf86b9"
 }
