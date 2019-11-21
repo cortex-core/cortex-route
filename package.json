@@ -1,10 +1,13 @@
 {
   "name": "cortex-route-parent",
-  "description": "Service to provide scalable STUN functionality and respond peer route queries",
+  "description": "Service to respond peer route queries",
   "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cortex-core/cortex-axon.git"
+  },
+  "scripts": {
+    "test": "lerna run --scope cortex-route-* test"
   },
   "author": "Basar Turgut",
   "license": "GPL-3.0",

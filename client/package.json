@@ -5,6 +5,9 @@
   "main": "main/client.js",
   "author": "Basar Turgut",
   "license": "GPL-3.0",
+  "scripts": {
+    "test": "mocha --recursive --exit"
+  },
   "dependencies": {
     "axios": "^0.18.0"
   },

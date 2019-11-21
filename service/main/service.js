@@ -41,8 +41,6 @@ app.get('/route', function(req, res) {
     });
 });
 
-app.listen(config.get('service_port'), function() {
+module.exports = app.listen(config.get('service_port'), function() {
     console.log("cortex-route started.");
 });
-
-module.exports = app;

@@ -15,5 +15,9 @@
     "helmet": "^3.18.0",
     "redis": "^2.8.0"
   },
-  "gitHead": "08b2b7ad92326edbc682f81bc7a6dd18d5bf86b9"
+  "gitHead": "08b2b7ad92326edbc682f81bc7a6dd18d5bf86b9",
+  "devDependencies": {
+    "redis-mock": "^0.47.0",
+    "resnap": "^1.0.1"
+  }
 }

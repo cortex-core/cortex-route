@@ -2,7 +2,10 @@ const chai = require('chai');
 const chai_http = require('chai-http');
 const _ = require('lodash');
 const chai_date_string = require('chai-date-string');
+const sinon = require('sinon');
 const Redis = require('redis');
+const RedisMock = require("redis-mock");
+const restoreRequireCache = require('resnap')();
 
 chai.should();
 chai.use(chai_http);
@@ -12,9 +15,12 @@ describe('cortex-route IT', function() {
 
     let service;
     let redis;
+    let redis_client_create_mock;
 
     before(function(){
-        redis = Redis.createClient(); // Connect to local redis
+        redis_client_create_mock = sinon.stub(Redis, 'createClient');
+        redis = RedisMock.createClient(); // Connect to in-memory redis
+        redis_client_create_mock.returns(redis);
         redis.on("error", function (err) {
             console.log(err);
         });
@@ -31,6 +37,9 @@ describe('cortex-route IT', function() {
     after(function(){
         console.log("Finalizing testing bed...");
         redis.quit();
+        redis_client_create_mock.restore();
+        service.close();
+        restoreRequireCache();
     });
 
     it('should provide an interface via /route GET endpoint to query routes', function(done){

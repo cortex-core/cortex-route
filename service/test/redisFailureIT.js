@@ -4,6 +4,7 @@ const _ = require('lodash');
 const chai_date_string = require('chai-date-string');
 const Redis = require('redis');
 const sinon = require('sinon');
+const restoreRequireCache = require('resnap')();
 
 chai.should();
 chai.use(chai_http);
@@ -29,6 +30,8 @@ describe('cortex-route Redis Failure Handling IT', function() {
     after(function(){
         console.log("Finalizing testing bed...");
         redis_client_create_mock.restore();
+        service.close();
+        restoreRequireCache();
     });
 
     it('should fail with 503 if redis fails', function(done){
