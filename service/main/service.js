@@ -1,9 +1,12 @@
+process.env['NODE_CONFIG_DIR'] = './config/';
+
 const express = require('express');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const validator = require('express-validator');
 const _ = require('lodash');
 const redis = require('redis').createClient();
+const config = require('config');
 
 let app = express();
 
@@ -38,7 +41,7 @@ app.get('/route', function(req, res) {
     });
 });
 
-app.listen(8080, function() {
+app.listen(config.get('service_port'), function() {
     console.log("cortex-route started.");
 });
 

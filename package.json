@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/cortex-core/cortex-axon#readme",
   "dependencies": {
+    "config": "^3.2.4",
     "lodash": "^4.17.11",
     "node-stun": "git+https://github.com/cortex-core/stun.git#v1.0.0",
     "winston": "^3.2.1"
